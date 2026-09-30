@@ -10,6 +10,11 @@ struct Movie {
     std::string description;
 };    
 
+void searchByTitle(const std::vector<Movie>& movies, const std::string& query)
+void filterByGenre(const std::vector<Movie>& movies, const std::string& targetGenre)
+void filterByMinRating(const std::vector<Movie>& movies, int minRating)
+void filterByLanguage(const std::vector<Movie>& movies, const std::string& lang)
+
 int main() {
     Movie m1 = {"Hope", "Sci-Fi", 1};
     Movie m2 = {"Colony", "Sci-Fi, 4"}
