@@ -13,7 +13,7 @@ struct movie {
     
 };
 
-vector<movie> laodmovieDatabase(const string& moviefile) {
+vector<movie> loadMovieDatabase(const string& moviefile) {
     vector<movie> db;
     ifstream file(moviefile);
     if(!file.is_open()) {
