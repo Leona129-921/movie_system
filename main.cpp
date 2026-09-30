@@ -6,3 +6,6 @@ int main() {
 }
 
 //testing testing
+cout
+
+
