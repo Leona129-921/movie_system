@@ -1,6 +1,28 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <vector>
+
 using namespace std;
+
+struct movie {
+    string title;
+    string genre;
+    int rating;
+    string language;
+    
+};
+
+vector<movie> laodmovieDatabase(const string& moviefile) {
+    vector<movie> db;
+    ifstream file(moviefile);
+    if(!file.is_open()) {
+        cout<<"Sorry, could not open Movie File." <<endl;
+        return db;
+    }
+     
+
+}
 
 int main() 
 {
@@ -53,3 +75,4 @@ int main()
 
     return 0;
 }
+
