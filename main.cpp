@@ -1,11 +1,33 @@
 #include <iostream>
-using namespace std;
+#include <vector>
+#include <string>
+
+struct Movie {
+    std::string title;
+    std::string genre;
+    int rating; // 1 to 5 stars
+    std::string language;
+    std::string description;
+};    
+
 int main() {
-    cout << "Movie System is working!" << endl;
+    Movie m1 = {"Hope", "Sci-Fi", 1};
+    Movie m2 = {"Colony", "Sci-Fi, 4"}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return 0;
 }
 
-//testing testing
-cout
 
-sakfnsafjaw
