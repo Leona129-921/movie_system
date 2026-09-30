@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+// A. Search by Title (Keyword match)
+void searchByTitle(const std::vector<Movie>& movies, const std::string& query) {
+    bool found = false;
+    std::cout << "\n--- Search Results for: \"" << query << "\" ---\n";
+    
+    for (const auto& movie : movies) {
+        if (movie.title.find(query) != std::string::npos) {
+            std::cout << "- " << movie.title << " [" << movie.genre << "] | Rating: " 
+                      << movie.rating << "/5 Stars | Lang: " << movie.language << "\n";
+            found = true;
+        }
+    }
+    
+    if (!found) {
+        std::cout << "No movies found matching title: " << query << "\n";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+struct Movie {
+    std::string title;
+    std::string genre;
+    std::string language;
+    std::string description;
+    int rating; // 1 to 5 stars
+};
