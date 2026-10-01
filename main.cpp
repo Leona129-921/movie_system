@@ -171,12 +171,12 @@ vector<Movie> loadMoviesDatabase(const string& filename)
             if (!desc.empty() && desc[0] == ' ') desc = desc.substr(1);
 
             Movie m;
-            m.title = toLower(title);
-            m.genre = toLower(genre);
+            m.title = title;
+            m.genre = genre;
             m.year = stoi(year);
-            m.language = toLower(lang);
+            m.language = lang;
             m.rating = (int)(stod(rating) / 2.0);
-            m.description = toLower(desc);
+            m.description = desc;
 
             movies.push_back(m);
         }
@@ -188,12 +188,13 @@ vector<Movie> loadMoviesDatabase(const string& filename)
 bool searchByTitle(const vector<Movie>& movies,const string& query)
 {
     bool found=false;
+    const string normalizedQuery = toLower(query);
     cout<<"========================================="<<endl;
     cout<<" SEARCH RESULTS FOR: "<<query<<endl;
     cout<<"========================================="<<endl;
     for(const auto& movie:movies)
     {
-        if(movie.title.find(query)!=string::npos)
+        if(toLower(movie.title).find(normalizedQuery)!=string::npos)
         {
             cout<<"Movie: "<<movie.title<<endl;
             cout<<"Genre: "<<movie.genre<<endl;
