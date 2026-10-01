@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
@@ -15,19 +19,32 @@ struct Movie
      
 };    
 
+string toLower(string str) 
+{
+    transform(str.begin(), str.end(), str.begin(), [](unsigned char c) {
+        return tolower(c);
+    });
+    return str;
+}
+
 //functions
 bool searchByTitle(const vector<Movie>& movies, const string& query);
 bool filterByGenre(const vector<Movie>& movies, const string& targetGenre);
 bool filterByMinRating(const vector<Movie>& movies, int minRating);
 bool filterByLanguage(const vector<Movie>& movies, const string& lang);
+vector<Movie> loadMoviesDatabase(const string& filename);
 
 int main() 
 {
+    // to load database
+    vector<Movie> catalog = loadMoviesDatabase("movie.txt");
    
+    /*
     //a hardcoded small database, will be replaced with the complete version of database
     Movie m1 = {"Hope", "Sci-Fi", 1, "English", "A bad movie", 2026};
     Movie m2 = {"Colony", "Sci-Fi", 4, "English", "Zombie Movie", 2026};
     vector<Movie> catalog = {m1, m2};
+    */
 
     int FM;
     vector<int> Favourite;
@@ -128,6 +145,43 @@ int main()
 
 
     return 0;
+}
+
+// load movie database file 
+vector<Movie> loadMoviesDatabase(const string& filename) 
+{
+    vector<Movie> movies;
+    ifstream file(filename);
+    string line;
+
+    while (getline(file, line))
+    {
+        stringstream ss(line);
+        string title, genre, year, lang, rating, desc;
+
+        if (getline(ss, title, ',') &&
+            getline(ss, genre, ',') &&
+            getline(ss, year, ',') &&
+            getline(ss, lang, ',') &&
+            getline(ss, rating, ',') &&
+            getline(ss, desc))
+        {
+            if (!genre.empty() && genre[0] == ' ') genre = genre.substr(1);
+            if (!lang.empty() && lang[0] == ' ') lang = lang.substr(1);
+            if (!desc.empty() && desc[0] == ' ') desc = desc.substr(1);
+
+            Movie m;
+            m.title = toLower(title);
+            m.genre = toLower(genre);
+            m.year = stoi(year);
+            m.language = toLower(lang);
+            m.rating = (int)(stod(rating) / 2.0);
+            m.description = toLower(desc);
+
+            movies.push_back(m);
+        }
+    }
+    return movies;
 }
 
 //fuction definitions
