@@ -6,13 +6,12 @@ using namespace std;
 
 struct Movie 
 {
-    string title;
-    string genre;
+    std::string title;
+    std::string genre;
+    int rating; // 1 to 5 stars
+    std::string language;
+    std::string description;
     int year; 
-    string language;
-    double rating; // 1 to 5 stars
-    string description;
-    
 };    
 
 //functions
@@ -25,8 +24,8 @@ int main()
 {
    
     //a hardcoded small database, will be replaced with the complete version of database
-    Movie m1 = {"Hope", "Sci-Fi", 2026, "Korean", 1, "A bad movie"};
-    Movie m2 = {"Colony", "Sci-Fi", 2026, "Korean", 4, "Zombie Movie"};
+    Movie m1 = {"Hope", "Sci-Fi", 1, "English", "A bad movie", 2026};
+    Movie m2 = {"Colony", "Sci-Fi", 4, "English", "Zombie Movie", 2026};
     vector<Movie> catalog = {m1, m2};
    
     int choice;
@@ -36,7 +35,7 @@ int main()
     double minRatingStar;
     string language;
 
-    cout << "====== Movie Finder ======" << endl;
+    cout<<"======Netflix Movie Finder======"<<endl;
 
     cout<<"Please enter your username: ";
     cin>>name;
@@ -74,9 +73,10 @@ int main()
 
         else if (choice == 3) 
         {
-        cout<<"Enter your preferred minimum rating (1 to 5 stars): ";
-        cin>>minRatingStar;
-        filterByMinRating(catalog, minRatingStar);
+            cout<<"Enter your preferred minimum rating (1 to 5 stars): ";
+            cin>>minRatingStar;
+            cin.ignore();
+            filterByMinRating(catalog, minRatingStar);
         }
 
         else if (choice == 4)
