@@ -20,8 +20,6 @@ vector<movie> loadMovieDatabase(const string& moviefile) {
         cout<<"Sorry, could not open Movie File." <<endl;
         return db;
     }
-     
-
 }
 
 void favouriteMovie();
