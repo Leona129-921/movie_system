@@ -36,7 +36,7 @@ int main()
     double minRatingStar;
     string language;
 
-    cout<<"======Netflix Movie Finder======"<<endl;
+    cout << "====== Movie Finder ======" << endl;
 
     cout<<"Please enter your username: ";
     cin>>name;
