@@ -18,7 +18,7 @@ struct Movie
 //functions
 bool searchByTitle(const vector<Movie>& movies, const string& query);
 bool filterByGenre(const vector<Movie>& movies, const string& targetGenre);
-bool filterByMinRating(const vector<Movie>& movies, int minRating);
+bool filterByMinRating(const vector<Movie>& movies, double minRating);
 bool filterByLanguage(const vector<Movie>& movies, const string& lang);
 
 int main() 
@@ -36,10 +36,10 @@ int main()
     string name;
     string movieName;
     string genre;
-    int minRatingStar;
+    double minRatingStar;
     string language;
 
-    cout << "====== Movie Finder ======" << endl;
+    cout<<"======Netflix Movie Finder======"<<endl;
 
     cout<<"Please enter your username: ";
     cin>>name;
@@ -79,9 +79,10 @@ int main()
 
         else if (choice == 3) 
         {
-        cout<<"Enter your preferred minimum rating (1 to 5 stars): ";
-        cin>>minRatingStar;
-        filterByMinRating(catalog, minRatingStar);
+            cout<<"Enter your preferred minimum rating (1 to 5 stars): ";
+            cin>>minRatingStar;
+            cin.ignore();
+            filterByMinRating(catalog, minRatingStar);
         }
 
         else if (choice == 4)
@@ -188,7 +189,7 @@ bool filterByGenre(const vector<Movie>& movies,const string& targetGenre)
     return found;
 }
 
-bool filterByMinRating(const vector<Movie>& movies,int minRating)
+bool filterByMinRating(const vector<Movie>& movies,double minRating)
 {
     bool found=false;
     cout<<"========================================="<<endl;
