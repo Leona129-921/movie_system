@@ -28,6 +28,9 @@ int main()
     Movie m1 = {"Hope", "Sci-Fi", 1, "English", "A bad movie", 2026};
     Movie m2 = {"Colony", "Sci-Fi", 4, "English", "Zombie Movie", 2026};
     vector<Movie> catalog = {m1, m2};
+
+    int FM;
+    vector<int> Favourite;
    
     int choice;
     string name;
@@ -49,7 +52,9 @@ int main()
         cout<<"2. Movie Recommendation (Sci-Fi, Action, Comedy)"<<endl;
         cout<<"3. Minimum Rating (1 to 5 stars)"<<endl;
         cout<<"4. Language (English, Chinese, Tamil, Japanese, Korean)"<<endl;
-        cout<<"5. Exit"<<endl;
+        cout <<"5. Toggle Favourite Movies" << endl;
+        cout <<"6. View All Saved Favourites" << endl;
+        cout<<"7. Exit"<<endl;
         cout<<"==============================="<<endl;
 
         cout<<"Please enter your choice: ";
@@ -87,7 +92,27 @@ int main()
             filterByLanguage(catalog, language);
         }
 
-        else if (choice == 5) 
+        else if (choice ==5) {
+            cout<<"What is your Favourite Movie? (enter Movie ID only)";
+            cin>>FM;
+            Favourite.push_back(FM);
+            cout<<"Your Movie has been added to Favourites\n";
+        }
+
+        else if (choice ==6){
+            if(Favourite.empty()){
+                cout<<"No Favourite Movies has been added yet to the list\n";
+            }
+            else{
+                for(int i=0; i<Favourite.size(); i++){
+                    int MovieID=Favourite[i];
+                    cout<<"Your favourite movie #"<<i+1<<" is "<< MovieID;
+                    cout<<endl;
+                }
+            }
+        }
+
+        else if (choice == 7) 
         {
             cout<<"Exiting the program. Goodbye!"<<endl;
             break;
