@@ -46,8 +46,8 @@ int main()
     vector<Movie> catalog = {m1, m2};
     */
 
-    int FM;
-    vector<int> Favourite;
+    string WL;
+    vector<string> Watch;
    
     int choice;
     string name;
@@ -69,8 +69,8 @@ int main()
         cout<<"2. Movie Recommendation (Sci-Fi, Action, Comedy)"<<endl;
         cout<<"3. Minimum Rating (1 to 5 stars)"<<endl;
         cout<<"4. Language (English, Chinese, Tamil, Japanese, Korean)"<<endl;
-        cout <<"5. Toggle Favourite Movies" << endl;
-        cout <<"6. View All Saved Favourites" << endl;
+        cout<<"5. Save Movies to Watchlist" << endl;
+        cout<<"6. Watchlist Overview" << endl;
         cout<<"7. Exit"<<endl;
         cout<<"==============================="<<endl;
 
@@ -110,20 +110,21 @@ int main()
         }
 
         else if (choice ==5) {
-            cout<<"What is your Favourite Movie? (enter Movie ID only)";
-            cin>>FM;
-            Favourite.push_back(FM);
-            cout<<"Your Movie has been added to Favourites\n";
+            cout<<"What Movie do you want to add into the watchlist? (enter Full Movie Name!): ";
+            cin.ignore();
+            getline(cin, WL);
+            Watch.push_back(WL);
+            cout<<WL<<" has been added to the Movies Watchlist\n";
         }
 
         else if (choice ==6){
-            if(Favourite.empty()){
-                cout<<"No Favourite Movies has been added yet to the list\n";
+            if(Watch.empty()){
+                cout<<"No Movies has been added yet to the Watchlist\n";
             }
             else{
-                for(int i=0; i<Favourite.size(); i++){
-                    int MovieID=Favourite[i];
-                    cout<<"Your favourite movie #"<<i+1<<" is "<< MovieID;
+                for(int i=0; i<Watch.size(); i++){
+                    string MovieName=Watch[i];
+                    cout<<"Your Watchlist #"<<i+1<<" is "<< MovieName;
                     cout<<endl;
                 }
             }
