@@ -22,8 +22,6 @@ vector<movie> loadMovieDatabase(const string& moviefile) {
     }
 }
 
-void favouriteMovie();
-
 int main() 
 {
     int choice;
