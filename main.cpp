@@ -6,33 +6,34 @@ using namespace std;
 
 struct Movie 
 {
-    std::string title;
-    std::string genre;
-    int rating; // 1 to 5 stars
-    std::string language;
-    std::string description;
+    string title;
+    string genre;
     int year; 
+    string language;
+    double rating; // 1 to 5 stars
+    string description;
+    
 };    
 
 //functions
 bool searchByTitle(const vector<Movie>& movies, const string& query);
 bool filterByGenre(const vector<Movie>& movies, const string& targetGenre);
-bool filterByMinRating(const vector<Movie>& movies, int minRating);
+bool filterByMinRating(const vector<Movie>& movies, double minRating);
 bool filterByLanguage(const vector<Movie>& movies, const string& lang);
 
 int main() 
 {
    
     //a hardcoded small database, will be replaced with the complete version of database
-    Movie m1 = {"Hope", "Sci-Fi", 1, "English", "A bad movie", 2026};
-    Movie m2 = {"Colony", "Sci-Fi", 4, "English", "Zombie Movie", 2026};
+    Movie m1 = {"Hope", "Sci-Fi", 2026, "Korean", 1, "A bad movie"};
+    Movie m2 = {"Colony", "Sci-Fi", 2026, "Korean", 4, "Zombie Movie"};
     vector<Movie> catalog = {m1, m2};
    
     int choice;
     string name;
     string movieName;
     string genre;
-    int minRatingStar;
+    double minRatingStar;
     string language;
 
     cout<<"======Netflix Movie Finder======"<<endl;
@@ -162,7 +163,7 @@ bool filterByGenre(const vector<Movie>& movies,const string& targetGenre)
     return found;
 }
 
-bool filterByMinRating(const vector<Movie>& movies,int minRating)
+bool filterByMinRating(const vector<Movie>& movies,double minRating)
 {
     bool found=false;
     cout<<"========================================="<<endl;
