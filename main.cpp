@@ -6,12 +6,13 @@ using namespace std;
 
 struct Movie 
 {
-    std::string title;
-    std::string genre;
+    string title;
+    string genre;
+    int year;
+    string language;
     int rating; // 1 to 5 stars
-    std::string language;
-    std::string description;
-    int year; 
+    string description;
+     
 };    
 
 //functions
