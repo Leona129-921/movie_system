@@ -14,7 +14,7 @@ struct Movie
     string genre;
     int year;
     string language;
-    int rating; // 1 to 5 stars
+    int rating; // 1 to 10 stars
     string description;
      
 };    
@@ -67,7 +67,7 @@ int main()
         cout<<"Welcome, "<<name<<"!"<<endl;
         cout<<"1. Search a movie"<<endl;
         cout<<"2. Movie Recommendation (Sci-Fi, Action, Comedy)"<<endl;
-        cout<<"3. Minimum Rating (1 to 5 stars)"<<endl;
+        cout<<"3. Minimum Rating (1 to 10 stars)"<<endl;
         cout<<"4. Language (English, Chinese, Tamil, Japanese, Korean)"<<endl;
         cout<<"5. Save Movies to Watchlist" << endl;
         cout<<"6. Watchlist Overview" << endl;
@@ -96,9 +96,9 @@ int main()
 
         else if (choice == 3) 
         {
-        cout<<"Enter your preferred minimum rating (1 to 5 stars): ";
-        cin>>minRatingStar;
-        filterByMinRating(catalog, minRatingStar);
+            cout<<"Enter your preferred minimum rating (1 to 10 stars): ";
+            cin>>minRatingStar;
+            filterByMinRating(catalog, minRatingStar);
         }
 
         else if (choice == 4)
@@ -176,7 +176,7 @@ vector<Movie> loadMoviesDatabase(const string& filename)
             m.genre = genre;
             m.year = stoi(year);
             m.language = lang;
-            m.rating = (int)(stod(rating) / 2.0);
+            m.rating = stoi(rating);
             m.description = desc;
 
             movies.push_back(m);
@@ -201,7 +201,7 @@ bool searchByTitle(const vector<Movie>& movies,const string& query)
             cout<<"Genre: "<<movie.genre<<endl;
             cout<<"Year: "<<movie.year<<endl;
             cout<<"Language: "<<movie.language<<endl;
-            cout<<"Rating: "<<movie.rating<<"/5 stars"<<endl;
+            cout<<"Rating: "<<movie.rating<<"/10 stars"<<endl;
             cout<<"Overview: "<<movie.description<<endl<<endl;
             found=true; 
         }
@@ -230,7 +230,7 @@ bool filterByGenre(const vector<Movie>& movies,const string& targetGenre)
             cout<<"Genre: "<<movie.genre<<endl;
             cout<<"Year: "<<movie.year<<endl;
             cout<<"Language: "<<movie.language<<endl;
-            cout<<"Rating: "<<movie.rating<<"/5 stars"<<endl;
+            cout<<"Rating: "<<movie.rating<<"/10 stars"<<endl;
             cout<<"Overview: "<<movie.description<<endl<<endl;
             found=true;
         }
@@ -258,7 +258,7 @@ bool filterByMinRating(const vector<Movie>& movies,int minRating)
             cout<<"Genre: "<<movie.genre<<endl;
             cout<<"Year: "<<movie.year<<endl;
             cout<<"Language: "<<movie.language<<endl;
-            cout<<"Rating: "<<movie.rating<<"/5 stars"<<endl;
+            cout<<"Rating: "<<movie.rating<<"/10 stars"<<endl;
             cout<<"Overview: "<<movie.description<<endl<<endl;
             found=true;
         }
@@ -287,7 +287,7 @@ bool filterByLanguage(const vector<Movie>& movies,const string& lang)
             cout<<"Genre: "<<movie.genre<<endl;
             cout<<"Year: "<<movie.year<<endl;
             cout<<"Language: "<<movie.language<<endl;
-            cout<<"Rating: "<<movie.rating<<"/5 stars"<<endl;
+            cout<<"Rating: "<<movie.rating<<"/10 stars"<<endl;
             cout<<"Overview: "<<movie.description<<endl<<endl;
             found=true;
         }
